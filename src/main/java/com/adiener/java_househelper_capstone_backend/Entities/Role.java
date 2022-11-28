@@ -1,4 +1,4 @@
-package com.example.lastbuildweek.entities;
+package com.adiener.java_househelper_capstone_backend.Entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

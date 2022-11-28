@@ -1,17 +1,13 @@
-package com.example.lastbuildweek.entities;
+package com.adiener.java_househelper_capstone_backend.Entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -34,12 +30,6 @@ public class User {
     private String username;
 
     private String password;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonBackReference
-//    @JsonIgnore
-    @ToString.Exclude
-    List<Cliente> clienti = new ArrayList<>();
 
     public User( String nomeCompleto, String username, String password, String email ) {
         this.email = email;

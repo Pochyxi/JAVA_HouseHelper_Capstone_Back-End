@@ -1,8 +1,8 @@
-package com.example.lastbuildweek.controllers;
+package com.adiener.java_househelper_capstone_backend.controllers;
 
-import com.example.lastbuildweek.entities.Role;
 
-import com.example.lastbuildweek.services.RoleService;
+import com.adiener.java_househelper_capstone_backend.Entities.Role;
+import com.adiener.java_househelper_capstone_backend.services.RoleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,8 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
+
 
 @Slf4j
 @RestController
@@ -35,7 +35,7 @@ public class RoleController {
 
 	// GET ALL PAGEABLE
 	@GetMapping("/pageable")
-	public ResponseEntity<Page<Role>> getAllRolesPageable(Pageable p) {
+	public ResponseEntity<Page<Role>> getAllRolesPageable( Pageable p) {
 		Page<Role> findAll = rs.getAllPaginate(p);
 
 		if (findAll.hasContent()) {

@@ -1,8 +1,9 @@
-package com.example.lastbuildweek.services;
+package com.adiener.java_househelper_capstone_backend.services;
 
-import com.example.lastbuildweek.entities.Role;
-import com.example.lastbuildweek.entities.RoleType;
-import com.example.lastbuildweek.repositories.RoleRepository;
+
+import com.adiener.java_househelper_capstone_backend.Entities.Role;
+import com.adiener.java_househelper_capstone_backend.Entities.RoleType;
+import com.adiener.java_househelper_capstone_backend.repositories.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +19,7 @@ public class RoleService {
 	RoleRepository repository;
 
 	// GET BY ID
-	public Role getById(Long id) throws Exception {
+	public Role getById( Long id) throws Exception {
 		Optional<Role> ba = repository.findById(id);
 		if ( ba.isEmpty() )
 			throw new Exception("Role not available");

@@ -1,7 +1,8 @@
-package com.example.lastbuildweek.Security;
+package com.adiener.java_househelper_capstone_backend.Security;
 
-import com.example.lastbuildweek.entities.User;
-import com.example.lastbuildweek.repositories.UserRepository;
+
+import com.adiener.java_househelper_capstone_backend.Entities.User;
+import com.adiener.java_househelper_capstone_backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

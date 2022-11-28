@@ -1,10 +1,10 @@
-package com.example.lastbuildweek.controllers;
+package com.adiener.java_househelper_capstone_backend.controllers;
 
-import com.example.lastbuildweek.Security.JwtUtils;
-import com.example.lastbuildweek.Security.LoginRequest;
-import com.example.lastbuildweek.Security.LoginResponse;
-import com.example.lastbuildweek.Security.UserDetailsImpl;
-import com.example.lastbuildweek.services.UserService;
+import com.adiener.java_househelper_capstone_backend.Security.JwtUtils;
+import com.adiener.java_househelper_capstone_backend.Security.LoginRequest;
+import com.adiener.java_househelper_capstone_backend.Security.LoginResponse;
+import com.adiener.java_househelper_capstone_backend.Security.UserDetailsImpl;
+import com.adiener.java_househelper_capstone_backend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

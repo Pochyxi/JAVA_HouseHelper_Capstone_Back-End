@@ -1,12 +1,12 @@
-package com.example.lastbuildweek.controllers;
+package com.adiener.java_househelper_capstone_backend.controllers;
 
 
-import com.example.lastbuildweek.entities.RoleType;
-import com.example.lastbuildweek.entities.User;
-import com.example.lastbuildweek.services.RoleService;
-import com.example.lastbuildweek.services.UserService;
-import com.example.lastbuildweek.utils.RequestModels.UserRequest;
-import com.example.lastbuildweek.utils.ResponseModels.UserResponse;
+import com.adiener.java_househelper_capstone_backend.Entities.RoleType;
+import com.adiener.java_househelper_capstone_backend.Entities.User;
+import com.adiener.java_househelper_capstone_backend.RequestModels.UserRequest;
+import com.adiener.java_househelper_capstone_backend.ResponseModels.UserResponse;
+import com.adiener.java_househelper_capstone_backend.services.RoleService;
+import com.adiener.java_househelper_capstone_backend.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

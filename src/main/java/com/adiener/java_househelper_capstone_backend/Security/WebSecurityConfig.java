@@ -1,4 +1,4 @@
-package com.example.lastbuildweek.Security;
+package com.adiener.java_househelper_capstone_backend.Security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

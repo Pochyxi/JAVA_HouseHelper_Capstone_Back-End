@@ -1,6 +1,5 @@
-package com.example.lastbuildweek.utils.RequestModels;
+package com.adiener.java_househelper_capstone_backend.RequestModels;
 
-import com.example.lastbuildweek.entities.User;
 import lombok.*;
 
 @Builder

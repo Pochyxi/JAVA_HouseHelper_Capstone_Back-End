@@ -1,4 +1,4 @@
-package com.example.lastbuildweek.Security;
+package com.adiener.java_househelper_capstone_backend.Security;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

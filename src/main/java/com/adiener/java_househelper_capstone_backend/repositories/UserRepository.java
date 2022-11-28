@@ -1,6 +1,6 @@
-package com.example.lastbuildweek.repositories;
+package com.adiener.java_househelper_capstone_backend.repositories;
 
-import com.example.lastbuildweek.entities.User;
+import com.adiener.java_househelper_capstone_backend.Entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

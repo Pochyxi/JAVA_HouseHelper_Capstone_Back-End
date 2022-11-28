@@ -1,10 +1,11 @@
-package com.example.lastbuildweek.services;
+package com.adiener.java_househelper_capstone_backend.services;
 
-import com.example.lastbuildweek.entities.Role;
-import com.example.lastbuildweek.entities.User;
-import com.example.lastbuildweek.repositories.UserRepository;
-import com.example.lastbuildweek.utils.RequestModels.UserRequest;
-import com.example.lastbuildweek.utils.ResponseModels.UserResponse;
+
+import com.adiener.java_househelper_capstone_backend.Entities.Role;
+import com.adiener.java_househelper_capstone_backend.Entities.User;
+import com.adiener.java_househelper_capstone_backend.RequestModels.UserRequest;
+import com.adiener.java_househelper_capstone_backend.ResponseModels.UserResponse;
+import com.adiener.java_househelper_capstone_backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

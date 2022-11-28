@@ -1,6 +1,7 @@
-package com.example.lastbuildweek.Security;
+package com.adiener.java_househelper_capstone_backend.Security;
 
-import com.example.lastbuildweek.entities.User;
+
+import com.adiener.java_househelper_capstone_backend.Entities.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

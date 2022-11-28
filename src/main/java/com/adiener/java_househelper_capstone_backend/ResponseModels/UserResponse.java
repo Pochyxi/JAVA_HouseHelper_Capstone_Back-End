@@ -1,7 +1,7 @@
-package com.example.lastbuildweek.utils.ResponseModels;
+package com.adiener.java_househelper_capstone_backend.ResponseModels;
 
-import com.example.lastbuildweek.entities.Role;
-import com.example.lastbuildweek.entities.User;
+import com.adiener.java_househelper_capstone_backend.Entities.Role;
+import com.adiener.java_househelper_capstone_backend.Entities.User;
 import lombok.*;
 
 import java.util.Set;
