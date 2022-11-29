@@ -1,13 +1,16 @@
 package com.adiener.java_househelper_capstone_backend.Entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -31,12 +34,11 @@ public class User {
 
     private String password;
 
-    public User( String nomeCompleto, String username, String password, String email ) {
-        this.email = email;
-        this.nomeCompleto = nomeCompleto;
-        this.username = username;
-        this.password = password;
-    }
+    @JsonBackReference
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ListaSpesa> listeSpesa = new ArrayList<>();
+
+
 
     @ManyToMany // PIU UTENTI POSSONO AVERE PIU RUOLI E VICEVERSA
     @JoinTable(name = "user_roles", //Nome della tabbella che verrà creata
@@ -46,6 +48,13 @@ public class User {
     private Set<Role> roles = new HashSet<Role>();
 
     private Boolean active = true;
+
+    public User( String nomeCompleto, String username, String password, String email ) {
+        this.email = email;
+        this.nomeCompleto = nomeCompleto;
+        this.username = username;
+        this.password = password;
+    }
 
     public void addRole( Role r ) {
 

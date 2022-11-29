@@ -2,6 +2,7 @@ package com.adiener.java_househelper_capstone_backend.services;
 
 import com.adiener.java_househelper_capstone_backend.Entities.ListaSpesa;
 import com.adiener.java_househelper_capstone_backend.Entities.Prodotto;
+import com.adiener.java_househelper_capstone_backend.Entities.User;
 import com.adiener.java_househelper_capstone_backend.RequestModels.ListaRequest;
 import com.adiener.java_househelper_capstone_backend.RequestModels.ProdottoRequest;
 import com.adiener.java_househelper_capstone_backend.repositories.ListaSpesaRepository;
@@ -23,7 +24,7 @@ public class ListaSpesaService {
     ProdottoService prodottoService;
 
     @Autowired
-    ProdottoRepository prodottoRepository;
+    UserService userService;
 
 
     public ListaSpesa getById( Long id ) throws Exception {
@@ -43,9 +44,15 @@ public class ListaSpesaService {
         listaSpesaRepository.save( lista );
     }
 
-    public ListaSpesa saveRequest( ListaRequest listaRequest ) {
+    public List<ListaSpesa> getListaSpesaByUserId(Long userId) {
+        return listaSpesaRepository.findListaSpesaByUserId( userId );
+    }
 
-        return listaSpesaRepository.save( ListaRequest.requestForSave( listaRequest ) );
+    public ListaSpesa saveRequest( ListaRequest listaRequest ) throws Exception {
+        ListaSpesa newList = ListaRequest.requestForSave( listaRequest );
+        newList.setUser( userService.getById( listaRequest.getUserId() ) );
+
+        return listaSpesaRepository.save( newList );
     }
 
     public void update( ListaSpesa lista ) {
@@ -57,7 +64,16 @@ public class ListaSpesaService {
         Optional<ListaSpesa> listaSpesa = listaSpesaRepository.findById( listaRequest.getId() );
 
         listaSpesa.ifPresent( list -> {
-            listaSpesaRepository.save( ListaRequest.requestForUpdate( listaRequest, list ) );
+            ListaSpesa newList = ListaRequest.requestForUpdate( listaRequest, list );
+
+            try {
+                newList.setUser( listaRequest.getUserId() == 0 ? list.getUser() :
+                        userService.getById( listaRequest.getUserId() ) );
+            } catch( Exception e ) {
+                System.out.println(e.getMessage());
+            }
+
+            listaSpesaRepository.save( newList );
         } );
     }
 

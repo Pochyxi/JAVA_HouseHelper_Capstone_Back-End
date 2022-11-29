@@ -20,14 +20,18 @@ public class ListaSpesa {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    String nome;
-
-
+    private String nome;
 
     @ManyToMany
     @JoinTable(name = "liste_spesa_prodotti",
             joinColumns = @JoinColumn(name = "lista_spesa_id"),
             inverseJoinColumns = @JoinColumn(name = "prodotti_id"))
-    List<Prodotto> prodotti = new java.util.ArrayList<>();
+    private List<Prodotto> prodotti = new java.util.ArrayList<>();
+
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH })
+    @JoinColumn(name = "user_user_id")
+    @JsonManagedReference
+    private User user;
+
 
 }

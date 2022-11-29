@@ -37,10 +37,19 @@ public class ListaController {
         );
     }
 
+    @GetMapping("/userId/{userId}")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    public ResponseEntity<List<ListaSpesa>> getListaSpesaByUserId(@PathVariable("userId") Long userId) throws Exception {
+
+        return new ResponseEntity<>(
+                listaSpesaService.getListaSpesaByUserId( userId ),
+                HttpStatus.OK
+        );
+    }
     // CREATE
     @PostMapping("/new")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
-    public ResponseEntity<ListaSpesa> create( @RequestBody ListaRequest listaRequest ) {
+    public ResponseEntity<ListaSpesa> create( @RequestBody ListaRequest listaRequest ) throws Exception {
 
 
 

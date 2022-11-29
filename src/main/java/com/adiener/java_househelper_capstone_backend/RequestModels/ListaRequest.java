@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class ListaRequest {
     private Long id;
     private String nome;
+    private Long userId;
 
     public static ListaSpesa requestForSave(ListaRequest listaRequest) {
         return ListaSpesa.builder()
