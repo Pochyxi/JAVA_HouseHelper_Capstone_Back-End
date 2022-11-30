@@ -22,7 +22,7 @@ public class ListaSpesa {
 
     private String nome;
 
-    @ManyToMany
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH })
     @JoinTable(name = "liste_spesa_prodotti",
             joinColumns = @JoinColumn(name = "lista_spesa_id"),
             inverseJoinColumns = @JoinColumn(name = "prodotti_id"))

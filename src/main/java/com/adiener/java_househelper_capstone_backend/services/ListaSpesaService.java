@@ -24,6 +24,9 @@ public class ListaSpesaService {
     ProdottoService prodottoService;
 
     @Autowired
+    ProdottoRepository prodottoRepository;
+
+    @Autowired
     UserService userService;
 
 
@@ -44,7 +47,7 @@ public class ListaSpesaService {
         listaSpesaRepository.save( lista );
     }
 
-    public List<ListaSpesa> getListaSpesaByUserId(Long userId) {
+    public List<ListaSpesa> getListaSpesaByUserId( Long userId ) {
         return listaSpesaRepository.findListaSpesaByUserId( userId );
     }
 
@@ -70,7 +73,7 @@ public class ListaSpesaService {
                 newList.setUser( listaRequest.getUserId() == 0 ? list.getUser() :
                         userService.getById( listaRequest.getUserId() ) );
             } catch( Exception e ) {
-                System.out.println(e.getMessage());
+                System.out.println( e.getMessage() );
             }
 
             listaSpesaRepository.save( newList );
@@ -88,11 +91,11 @@ public class ListaSpesaService {
         Prodotto prodottoF = prodottoService.getById( idProdotto );
 
         if( listaSpesaF.isPresent() && prodottoF != null ) {
+
             List<Prodotto> listProd = listaSpesaF.get().getProdotti();
             listProd.add( prodottoF );
 
             listaSpesaF.get().setProdotti( listProd );
-
 
             listaSpesaRepository.save( listaSpesaF.get() );
 
@@ -107,7 +110,6 @@ public class ListaSpesaService {
 
         Prodotto prodottoF = prodottoService.getById( idProdotto );
 
-        System.out.println(prodottoF);
 
         if( listaSpesaF.isPresent() && prodottoF != null ) {
             List<Prodotto> listProd = listaSpesaF.get().getProdotti();
@@ -119,7 +121,7 @@ public class ListaSpesaService {
             try {
                 save( listaSpesaF.get() );
             } catch( Exception e ) {
-                System.out.println(e.getMessage());
+                System.out.println( e.getMessage() );
             }
 
 

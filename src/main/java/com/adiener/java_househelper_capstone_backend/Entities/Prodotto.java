@@ -25,4 +25,11 @@ public class Prodotto {
 
     private Double prezzo;
 
+
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH })
+    @JoinTable(name = "liste_spesa_prodotti",
+            joinColumns = @JoinColumn(name = "prodotti_id"),
+            inverseJoinColumns = @JoinColumn(name = "lista_spesa_id"))
+    @JsonBackReference
+    private List<ListaSpesa> listeSpesa = new ArrayList<>();
 }

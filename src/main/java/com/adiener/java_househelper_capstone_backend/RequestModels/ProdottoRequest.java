@@ -28,6 +28,7 @@ public class ProdottoRequest {
                 .id( prodottoRequest.getId() )
                 .nome( prodottoRequest.getNome() == null ? prodotto.getNome() : prodottoRequest.getNome() )
                 .prezzo( prodottoRequest.getPrezzo() == 0 ? prodotto.getPrezzo() : prodottoRequest.getPrezzo() )
+                .listeSpesa( prodotto.getListeSpesa() )
                 .build();
     }
 }
