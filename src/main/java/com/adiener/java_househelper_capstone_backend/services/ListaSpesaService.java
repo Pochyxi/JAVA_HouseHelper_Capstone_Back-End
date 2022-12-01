@@ -2,17 +2,13 @@ package com.adiener.java_househelper_capstone_backend.services;
 
 import com.adiener.java_househelper_capstone_backend.Entities.ListaSpesa;
 import com.adiener.java_househelper_capstone_backend.Entities.Prodotto;
-import com.adiener.java_househelper_capstone_backend.Entities.User;
 import com.adiener.java_househelper_capstone_backend.RequestModels.ListaRequest;
-import com.adiener.java_househelper_capstone_backend.RequestModels.ProdottoRequest;
 import com.adiener.java_househelper_capstone_backend.repositories.ListaSpesaRepository;
 import com.adiener.java_househelper_capstone_backend.repositories.ProdottoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
