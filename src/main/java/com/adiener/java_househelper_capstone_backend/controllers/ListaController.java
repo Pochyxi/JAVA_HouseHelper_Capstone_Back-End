@@ -50,9 +50,6 @@ public class ListaController {
     @PostMapping("/new")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public ResponseEntity<ListaSpesa> create( @RequestBody ListaRequest listaRequest ) throws Exception {
-
-
-
         return new ResponseEntity<>( listaSpesaService.saveRequest( listaRequest ), HttpStatus.OK ) ;
     }
 

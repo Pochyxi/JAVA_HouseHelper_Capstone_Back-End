@@ -30,11 +30,9 @@ public class UserService {
     private UserRepository userRepository;
 
     // GET BY ID
-    public User getById( Long id ) throws Exception {
-        Optional<User> user = userRepository.findById( id );
-        if( user.isEmpty() )
-            throw new Exception( "User not available" );
-        return user.get();
+    public User getById( Long id ) {
+        return userRepository.findById( id ).isPresent() ? userRepository.findById( id ).get() : null;
+
     }
 
     // GET BY USERNAME
