@@ -2,7 +2,6 @@ package com.adiener.java_househelper_capstone_backend.controllers;
 
 
 import com.adiener.java_househelper_capstone_backend.Entities.ListaSpesa;
-import com.adiener.java_househelper_capstone_backend.Entities.Prodotto;
 import com.adiener.java_househelper_capstone_backend.RequestModels.ListaRequest;
 import com.adiener.java_househelper_capstone_backend.services.ListaSpesaService;
 import org.springframework.beans.factory.annotation.Autowired;

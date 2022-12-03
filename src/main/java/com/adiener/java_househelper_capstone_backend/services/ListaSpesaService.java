@@ -38,14 +38,16 @@ public class ListaSpesaService {
         return listaSpesaRepository.findAll();
     }
 
+    public List<ListaSpesa> getListaSpesaByUserId( Long userId ) {
+        return listaSpesaRepository.findListaSpesaByUserId( userId );
+    }
+
     public void save( ListaSpesa lista ) {
 
         listaSpesaRepository.save( lista );
     }
 
-    public List<ListaSpesa> getListaSpesaByUserId( Long userId ) {
-        return listaSpesaRepository.findListaSpesaByUserId( userId );
-    }
+
 
     public ListaSpesa saveRequest( ListaRequest listaRequest ) throws Exception {
         ListaSpesa newList = ListaRequest.requestForSave( listaRequest );
