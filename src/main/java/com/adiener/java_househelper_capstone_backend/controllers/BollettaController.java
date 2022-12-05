@@ -65,4 +65,34 @@ public class BollettaController {
     public void deleteById( @PathVariable Long id ) {
         bollettaService.delete( id );
     }
+
+
+    // RICERCA BOLLETTE PER RANGE DI EMISSIONE PER USERID
+    @GetMapping("/emissione-range/{inizio}/{fine}/userId/{userId}")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    public ResponseEntity<List<Bolletta>> getByEmissioneRange(@PathVariable("inizio") String inizio,
+                                                              @PathVariable String fine,
+                                                              @PathVariable("userId") Long userId) {
+
+        return new ResponseEntity<>( bollettaService.getBollettaByEmissioneRange( inizio, fine, userId ), HttpStatus.OK);
+    }
+
+    // RICERCA BOLLETTE PER NUMERO FATTURA PER USER ID
+    @GetMapping("/numero-fattura/{numero}/userId/{userId}")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    public ResponseEntity<List<Bolletta>> getByNumeroFattura(@PathVariable("numero") Long numero,
+                                                             @PathVariable("userId") Long userId) {
+
+        return new ResponseEntity<>( bollettaService.getBollettaByNumeroFattura( numero, userId ), HttpStatus.OK );
+    }
+
+    @GetMapping("/scadenza-maggiore/{dataInizio}/scadenza-minore/{dataFine}/userId/{userId}")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    public ResponseEntity<List<Bolletta>> getByScadenzaMinore(@PathVariable("dataInizio") String dataInizio,
+                                                              @PathVariable("dataFine") String dataFine,
+                                                              @PathVariable("userId") Long userId) {
+
+        return new ResponseEntity<>( bollettaService.getBollettaByDataScadenzaMinore( dataInizio, dataFine, userId ),
+                HttpStatus.OK);
+    }
 }

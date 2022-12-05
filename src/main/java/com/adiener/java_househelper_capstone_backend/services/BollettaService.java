@@ -89,4 +89,22 @@ public class BollettaService {
         lista.ifPresent( list -> bollettaRepository.delete( list ) );
 
     }
+
+    //RICERCA BOLLETTE PER DATA DI EMISSIONE RANGE
+    public List<Bolletta> getBollettaByEmissioneRange( String inizio, String fine, Long userId ) {
+        return bollettaRepository.findBollettaByEmissioneRange( LocalDate.parse( inizio ), LocalDate.parse( fine ),
+                userId );
+    }
+
+    // RICERCA BOLLETTE PER NUMERO FATTURA
+    public List<Bolletta> getBollettaByNumeroFattura( Long numero, Long userId ) {
+        return bollettaRepository.findBollettaByNumero( numero, userId );
+    }
+
+    // RICERCA BOLLETTE PER DATA DI SCADENZA MINORE DI DATA
+    public List<Bolletta> getBollettaByDataScadenzaMinore(String dataInizio, String dataFine, Long userId ) {
+
+        return bollettaRepository.findBollettaByScadenzaRange( LocalDate.parse( dataInizio ), LocalDate.parse( dataFine ),
+                userId );
+    }
 }
