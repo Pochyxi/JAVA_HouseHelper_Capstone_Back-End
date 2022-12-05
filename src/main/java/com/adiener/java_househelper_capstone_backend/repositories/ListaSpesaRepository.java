@@ -13,5 +13,5 @@ public interface ListaSpesaRepository extends JpaRepository<ListaSpesa, Long> {
     @Query(
             "select l from ListaSpesa l where l.user.id = :userId"
     )
-    public List<ListaSpesa> findListaSpesaByUserId(Long userId);
+    public List<ListaSpesa> findListaSpesaByUserId( Long userId );
 }

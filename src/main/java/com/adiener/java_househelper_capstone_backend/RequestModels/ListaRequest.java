@@ -29,4 +29,8 @@ public class ListaRequest {
                 .prodotti( listaSpesa.getProdotti() )
                 .build();
     }
+
+
+
+
 }
