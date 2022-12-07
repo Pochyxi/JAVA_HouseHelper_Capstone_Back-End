@@ -66,6 +66,17 @@ public class UserController {
         );
     }
 
+    // GET BY EMAIL
+    @GetMapping("email/{email}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<User> getByEmail( @PathVariable String email ) throws Exception {
+
+        return new ResponseEntity<>(
+                userService.getByEmail( email ),
+                HttpStatus.OK
+        );
+    }
+
     //GET BY USERNAME (UNIQUE)
     @GetMapping("/username/{username}")
     @PreAuthorize("hasRole('ADMIN')")

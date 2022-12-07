@@ -42,8 +42,16 @@ public class UserService {
     }
 
     // GET BY USERNAME CONTAINS
-    public List<User> findByUsernameContains( String username) {
+    public List<User> findByUsernameContains( String username ) {
         return userRepository.getUserByUsernameContains( username );
+    }
+
+    // GET BY EMAIL
+    public User getByEmail( String email ) {
+        Optional<User> userF = userRepository.findUserByEmail( email );
+
+        return userF.orElse( null );
+
     }
 
     // GET ALL
@@ -118,9 +126,6 @@ public class UserService {
             throw new Exception( "Utente non trovato" );
         }
     }
-
-
-
 
 
 }

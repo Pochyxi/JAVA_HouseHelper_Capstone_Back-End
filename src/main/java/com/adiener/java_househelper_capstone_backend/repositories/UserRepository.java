@@ -20,5 +20,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     )
     List<User> getUserByUsernameContains( @Param ( "nome" ) String nome );
 
+    Optional<User> findUserByEmail(String email);
+
 
 }
