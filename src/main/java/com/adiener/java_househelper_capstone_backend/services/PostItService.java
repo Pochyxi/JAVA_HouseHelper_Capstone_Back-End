@@ -1,5 +1,6 @@
 package com.adiener.java_househelper_capstone_backend.services;
 
+import com.adiener.java_househelper_capstone_backend.Entities.Bolletta;
 import com.adiener.java_househelper_capstone_backend.Entities.ListaSpesa;
 import com.adiener.java_househelper_capstone_backend.Entities.PostIt;
 import com.adiener.java_househelper_capstone_backend.Entities.User;
@@ -86,5 +87,11 @@ public class PostItService {
         Optional<PostIt> postIt = postItRepository.findById( id );
 
         postIt.ifPresent( post -> postItRepository.delete( post ) );
+    }
+
+    public List<PostIt> getPostitByDataScadenzaMinore( String dataInizio, String dataFine, Long userId ) {
+
+        return postItRepository.findPostItByScadenzaRange( LocalDate.parse( dataInizio ), LocalDate.parse( dataFine ),
+                userId );
     }
 }
