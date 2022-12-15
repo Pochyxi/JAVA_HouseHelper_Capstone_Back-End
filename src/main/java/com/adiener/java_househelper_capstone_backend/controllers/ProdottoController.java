@@ -26,6 +26,12 @@ public class ProdottoController {
         return new ResponseEntity<>(prodottoService.getAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/user/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    public ResponseEntity<List<Prodotto>> getAllByUser(@PathVariable Long id) {
+        return new ResponseEntity<>(prodottoService.getByUserId(id), HttpStatus.OK);
+    }
+
     // GET BY ID
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")

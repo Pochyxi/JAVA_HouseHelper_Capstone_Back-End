@@ -47,6 +47,10 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Bolletta> bollette = new ArrayList<>();
 
+    @JsonBackReference
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Prodotto> prodotti = new ArrayList<>();
+
 
 
     @ManyToMany // PIU UTENTI POSSONO AVERE PIU RUOLI E VICEVERSA

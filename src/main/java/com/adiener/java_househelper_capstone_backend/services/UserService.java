@@ -107,6 +107,9 @@ public class UserService {
             u.setPassword( userFind.get().getPassword() );
             u.setRoles( userFind.get().getRoles() );
             u.setActive( userFind.get().getActive() );
+            u.setBollette( userFind.get().getBollette() );
+            u.setListeSpesa( userFind.get().getListeSpesa() );
+            u.setProdotti( userFind.get().getProdotti() );
 
             userRepository.save( u );
             return UserResponse.parseUser( userFind.get() );
