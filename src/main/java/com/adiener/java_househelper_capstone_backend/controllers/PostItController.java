@@ -1,5 +1,6 @@
 package com.adiener.java_househelper_capstone_backend.controllers;
 
+import com.adiener.java_househelper_capstone_backend.Entities.Bolletta;
 import com.adiener.java_househelper_capstone_backend.Entities.ListaSpesa;
 import com.adiener.java_househelper_capstone_backend.Entities.PostIt;
 import com.adiener.java_househelper_capstone_backend.RequestModels.ListaRequest;
@@ -45,6 +46,16 @@ public class PostItController {
                 postItService.getListaSpesaByUserId( userId ),
                 HttpStatus.OK
         );
+    }
+
+    @GetMapping("/scadenza-maggiore/{dataInizio}/scadenza-minore/{dataFine}/userId/{userId}")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    public ResponseEntity<List<PostIt>> getByScadenzaMinore( @PathVariable("dataInizio") String dataInizio,
+                                                               @PathVariable("dataFine") String dataFine,
+                                                               @PathVariable("userId") Long userId) {
+
+        return new ResponseEntity<>( postItService.getPostitByDataScadenzaMinore( dataInizio, dataFine, userId ),
+                HttpStatus.OK);
     }
 
     @PostMapping("/new")

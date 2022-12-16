@@ -42,8 +42,16 @@ public class UserService {
     }
 
     // GET BY USERNAME CONTAINS
-    public List<User> findByUsernameContains( String username) {
+    public List<User> findByUsernameContains( String username ) {
         return userRepository.getUserByUsernameContains( username );
+    }
+
+    // GET BY EMAIL
+    public User getByEmail( String email ) {
+        Optional<User> userF = userRepository.findUserByEmail( email );
+
+        return userF.orElse( null );
+
     }
 
     // GET ALL
@@ -99,6 +107,9 @@ public class UserService {
             u.setPassword( userFind.get().getPassword() );
             u.setRoles( userFind.get().getRoles() );
             u.setActive( userFind.get().getActive() );
+            u.setBollette( userFind.get().getBollette() );
+            u.setListeSpesa( userFind.get().getListeSpesa() );
+            u.setProdotti( userFind.get().getProdotti() );
 
             userRepository.save( u );
             return UserResponse.parseUser( userFind.get() );
@@ -118,9 +129,6 @@ public class UserService {
             throw new Exception( "Utente non trovato" );
         }
     }
-
-
-
 
 
 }

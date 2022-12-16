@@ -25,6 +25,10 @@ public class Prodotto {
 
     private Double prezzo;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH })
     @JoinTable(name = "liste_spesa_prodotti",

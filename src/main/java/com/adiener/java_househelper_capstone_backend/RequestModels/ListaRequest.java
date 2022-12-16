@@ -3,6 +3,7 @@ package com.adiener.java_househelper_capstone_backend.RequestModels;
 import com.adiener.java_househelper_capstone_backend.Entities.ListaSpesa;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @NoArgsConstructor
@@ -15,10 +16,12 @@ public class ListaRequest {
     private Long id;
     private String nome;
     private Long userId;
+    private LocalDate dataCreazione;
 
     public static ListaSpesa requestForSave(ListaRequest listaRequest) {
         return ListaSpesa.builder()
                 .nome( listaRequest.getNome() )
+                .dataCreazione( LocalDate.now() )
                 .build();
     }
 

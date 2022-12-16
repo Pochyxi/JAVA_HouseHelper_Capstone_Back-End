@@ -12,6 +12,7 @@ import lombok.*;
 @Builder
 public class ProdottoRequest {
     private Long id;
+    private Long userId;
     private String nome;
     private Double prezzo;
 
@@ -27,8 +28,9 @@ public class ProdottoRequest {
         return Prodotto.builder()
                 .id( prodottoRequest.getId() )
                 .nome( prodottoRequest.getNome() == null ? prodotto.getNome() : prodottoRequest.getNome() )
-                .prezzo( prodottoRequest.getPrezzo() == 0 ? prodotto.getPrezzo() : prodottoRequest.getPrezzo() )
+                .prezzo( prodottoRequest.getPrezzo() == null ? prodotto.getPrezzo() : prodottoRequest.getPrezzo() )
                 .listeSpesa( prodotto.getListeSpesa() )
+                .user( prodotto.getUser() )
                 .build();
     }
 }

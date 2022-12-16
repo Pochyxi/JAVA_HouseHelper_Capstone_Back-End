@@ -27,6 +27,7 @@ public class User {
 
     private String nomeCompleto;
 
+    @Column(unique= true, nullable = false)
     private String email;
 
     @Column(unique = true, nullable = false)
@@ -45,6 +46,10 @@ public class User {
     @JsonBackReference
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Bolletta> bollette = new ArrayList<>();
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Prodotto> prodotti = new ArrayList<>();
 
 
 

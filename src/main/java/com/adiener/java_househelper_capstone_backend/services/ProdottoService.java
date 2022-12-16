@@ -14,11 +14,18 @@ public class ProdottoService {
     @Autowired
     ProdottoRepository prodottoRepository;
 
+    @Autowired
+    UserService userService;
+
     public Prodotto getById( Long id ) throws Exception {
         Optional<Prodotto> prodotto = prodottoRepository.findById( id );
         if( prodotto.isEmpty() )
             throw new Exception( "lista not available" );
         return prodotto.get();
+    }
+
+    public List<Prodotto> getByUserId(Long id) {
+        return prodottoRepository.findProdottoByUserId( id );
     }
 
     public List<Prodotto> getAll() {
@@ -27,8 +34,10 @@ public class ProdottoService {
     }
 
     public Prodotto save( ProdottoRequest prodotto ) {
+        Prodotto prodottoNew = ProdottoRequest.requestForSave( prodotto );
+        prodottoNew.setUser( userService.getById( prodotto.getUserId() ) );
 
-        return prodottoRepository.save( ProdottoRequest.requestForSave( prodotto ) );
+        return prodottoRepository.save( prodottoNew );
     }
 
     public void update( Prodotto prodotto ) {
@@ -39,8 +48,13 @@ public class ProdottoService {
     public void updateRequest( ProdottoRequest prodottoRequest ) {
         Optional<Prodotto> prodottoF = prodottoRepository.findById( prodottoRequest.getId());
 
-        prodottoF.ifPresent( pro -> {prodottoRepository.save( ProdottoRequest.requestForUpdate( prodottoRequest,
-                pro ) ); } );
+        prodottoF.ifPresent( pro -> {
+            Prodotto prodottoNew = ProdottoRequest.requestForUpdate( prodottoRequest,
+                    pro);
+            prodottoNew.setUser( prodottoRequest.getUserId() == 0 ? pro.getUser() :
+                    userService.getById( prodottoRequest.getUserId() ) );
+            prodottoRepository.save( prodottoNew );
+        } );
 
     }
 

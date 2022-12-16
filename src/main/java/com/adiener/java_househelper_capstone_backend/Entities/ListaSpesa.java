@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Builder
@@ -21,6 +22,8 @@ public class ListaSpesa {
     private Long id;
 
     private String nome;
+
+    private LocalDate dataCreazione;
 
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH })
     @JoinTable(name = "liste_spesa_prodotti",
