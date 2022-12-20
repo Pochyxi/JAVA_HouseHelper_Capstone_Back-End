@@ -11,7 +11,7 @@ import java.util.List;
 public interface ListaSpesaRepository extends JpaRepository<ListaSpesa, Long> {
 
     @Query(
-            "select l from ListaSpesa l where l.user.id = :userId"
+            "select l from ListaSpesa l where l.user.id = :userId order by l.dataCreazione desc"
     )
     public List<ListaSpesa> findListaSpesaByUserId( Long userId );
 }
